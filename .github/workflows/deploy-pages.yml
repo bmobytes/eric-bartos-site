@@ -1,0 +1,75 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      astro_site: ${{ steps.pages_meta.outputs.astro_site }}
+      astro_base: ${{ steps.pages_meta.outputs.astro_base }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Compute Astro site/base
+        id: pages_meta
+        shell: bash
+        run: |
+          OWNER="${GITHUB_REPOSITORY_OWNER}"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          SITE="https://${OWNER}.github.io"
+          if [ "$REPO" = "${OWNER}.github.io" ]; then
+            BASE="/"
+          else
+            BASE="/${REPO}"
+          fi
+          echo "astro_site=$SITE" >> "$GITHUB_OUTPUT"
+          echo "astro_base=$BASE" >> "$GITHUB_OUTPUT"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        env:
+          ASTRO_SITE: ${{ steps.pages_meta.outputs.astro_site }}
+          ASTRO_BASE: ${{ steps.pages_meta.outputs.astro_base }}
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

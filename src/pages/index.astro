@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import resume from '../data/resume.json';
+
+const { basics, projects, skills } = resume;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Eric Bartos — Senior Infrastructure Architect">
+  <section class="hero">
+    <h1>{basics.name}</h1>
+    <p class="subtitle">{basics.label}</p>
+    <p>{basics.summary}</p>
+    <div class="cta-links">
+      <a href={`${base}/resume/`}>Full Resume</a>
+      <a href={`${base}/blog/`}>Bartos Lab Logs</a>
+      <a href={`mailto:${basics.email}`}>Get in Touch</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Key Projects</h2>
+    <ul class="project-grid">
+      {projects.map((p) => (
+        <li class="project-card">
+          <h3>{p.name}</h3>
+          <p>{p.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skills at a Glance</h2>
+    {skills.map((group) => (
+      <div class="skill-group">
+        <h3>{group.name}</h3>
+        <ul class="skill-tags">
+          {group.keywords.map((kw) => <li>{kw}</li>)}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Email: <a href={`mailto:${basics.email}`}>{basics.email}</a><br />
+      Phone: {basics.phone}
+    </p>
+  </section>
+</BaseLayout>

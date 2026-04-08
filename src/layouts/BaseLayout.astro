@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Eric Bartos — Senior Infrastructure Architect' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const currentPath = Astro.url.pathname;
+const siteHref = Astro.site?.toString() ?? 'https://bartos.cloud';
+const siteLabel = (() => {
+  try {
+    return new URL(siteHref).host.replace(/^www\./, '');
+  } catch {
+    return 'bartos.cloud';
+  }
+})();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href={`${base}/`} class="brand">Eric Bartos</a>
+        <nav>
+          <a href={`${base}/`} class:list={[{ active: currentPath === `${base}/` }]}>Home</a>
+          <a href={`${base}/resume/`} class:list={[{ active: currentPath.startsWith(`${base}/resume`) }]}>Resume</a>
+          <a href={`${base}/blog/`} class:list={[{ active: currentPath.startsWith(`${base}/blog`) }]}>Lab Logs</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; {new Date().getFullYear()} Eric Bartos &middot; <a href={siteHref}>{siteLabel}</a></p>
+        <p style="font-size:0.78rem; opacity:0.65;">Built with AI-assisted workflows &amp; Astro</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
