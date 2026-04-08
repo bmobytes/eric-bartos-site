@@ -36,15 +36,13 @@ const siteLabel = (() => {
         <nav>
           <a href={`${base}/`} class:list={[{ active: currentPath === `${base}/` }]}>Home</a>
           <a href={`${base}/resume/`} class:list={[{ active: currentPath.startsWith(`${base}/resume`) }]}>Resume</a>
-          <a href={`${base}/blog/`} class:list={[{ active: currentPath.startsWith(`${base}/blog`) }]}>Lab Logs</a>
+          <a href={`${base}/blog/`} class:list={[{ active: currentPath.startsWith(`${base}/blog`) }]}>Bartos Lab Logs</a>
         </nav>
       </div>
     </header>
 
     <main>
-      <div class="container">
-        <slot />
-      </div>
+      <slot />
     </main>
 
     <footer class="site-footer">

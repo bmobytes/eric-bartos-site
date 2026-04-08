@@ -12,79 +12,81 @@ function formatRange(start: string, end: string | null): string {
 ---
 
 <BaseLayout title="Resume — Eric Bartos" description="Eric Bartos's professional resume — infrastructure, networking, and virtualization.">
-  <h1>Resume</h1>
-  <p class="subtitle" style="color:var(--color-text-muted); margin-bottom:2rem;">{basics.label}</p>
+  <div class="resume-wrapper">
+    <h1>Resume</h1>
+    <p class="subtitle">{basics.label}</p>
 
-  <section class="resume-section">
-    <h2>Summary</h2>
-    <p>{basics.summary}</p>
-  </section>
+    <section class="resume-section">
+      <h2>Summary</h2>
+      <p>{basics.summary}</p>
+    </section>
 
-  <section class="resume-section">
-    <h2>Experience</h2>
-    {work.map((job) => (
-      <div class="job">
-        <div class="job-header">
-          <h3>{job.name}</h3>
-          <span class="job-meta">{job.location} &middot; {formatRange(job.startDate, job.endDate)}</span>
-        </div>
-        {job.positions.map((pos) => (
-          <div class="position">
-            <span class="position-title">{pos.title}</span>
-            <span class="position-dates"> ({formatRange(pos.startDate, pos.endDate)})</span>
+    <section class="resume-section">
+      <h2>Experience</h2>
+      {work.map((job) => (
+        <div class="job">
+          <div class="job-header">
+            <h3>{job.name}</h3>
+            <span class="job-meta">{job.location} &middot; {formatRange(job.startDate, job.endDate)}</span>
           </div>
-        ))}
-        <ul>
-          {job.highlights.map((h) => <li>{h}</li>)}
-        </ul>
-      </div>
-    ))}
-  </section>
-
-  <section class="resume-section">
-    <h2>Key Projects</h2>
-    <ul>
-      {projects.map((p) => (
-        <li><strong>{p.name}</strong> — {p.description}</li>
-      ))}
-    </ul>
-  </section>
-
-  <section class="resume-section">
-    <h2>Education</h2>
-    {education.map((ed) => (
-      <div class="job">
-        <div class="job-header">
-          <h3>{ed.institution}</h3>
-          <span class="job-meta">{ed.location} &middot; {formatRange(ed.startDate, ed.endDate)}</span>
-        </div>
-        <p>{ed.studyType} — {ed.area}</p>
-        {ed.courses.length > 0 && (
+          {job.positions.map((pos) => (
+            <div class="position">
+              <span class="position-title">{pos.title}</span>
+              <span class="position-dates"> ({formatRange(pos.startDate, pos.endDate)})</span>
+            </div>
+          ))}
           <ul>
-            {ed.courses.map((c) => <li>{c}</li>)}
+            {job.highlights.map((h) => <li>{h}</li>)}
           </ul>
-        )}
-      </div>
-    ))}
-  </section>
+        </div>
+      ))}
+    </section>
 
-  <section class="resume-section">
-    <h2>Skills</h2>
-    {skills.map((group) => (
-      <div class="skill-group">
-        <h3>{group.name}</h3>
-        <ul class="skill-tags">
-          {group.keywords.map((kw) => <li>{kw}</li>)}
-        </ul>
-      </div>
-    ))}
-  </section>
+    <section class="resume-section">
+      <h2>Key Projects</h2>
+      <ul>
+        {projects.map((p) => (
+          <li><strong>{p.name}</strong> — {p.description}</li>
+        ))}
+      </ul>
+    </section>
 
-  <section class="resume-section">
-    <h2>Contact</h2>
-    <p>
-      Email: <a href={`mailto:${basics.email}`}>{basics.email}</a><br />
-      Phone: {basics.phone}
-    </p>
-  </section>
+    <section class="resume-section">
+      <h2>Education</h2>
+      {education.map((ed) => (
+        <div class="job">
+          <div class="job-header">
+            <h3>{ed.institution}</h3>
+            <span class="job-meta">{ed.location} &middot; {formatRange(ed.startDate, ed.endDate)}</span>
+          </div>
+          <p>{ed.studyType} — {ed.area}</p>
+          {ed.courses.length > 0 && (
+            <ul>
+              {ed.courses.map((c) => <li>{c}</li>)}
+            </ul>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <section class="resume-section">
+      <h2>Skills</h2>
+      {skills.map((group) => (
+        <div class="skill-group">
+          <h3>{group.name}</h3>
+          <ul class="skill-tags">
+            {group.keywords.map((kw) => <li>{kw}</li>)}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section class="resume-section">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href={`mailto:${basics.email}`}>{basics.email}</a><br />
+        Phone: {basics.phone}
+      </p>
+    </section>
+  </div>
 </BaseLayout>

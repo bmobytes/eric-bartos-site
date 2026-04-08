@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Use import.meta.glob (Astro 6 compatible)
 const postModules = import.meta.glob('../../content/blog/*.md', { eager: true });
 const posts = Object.values(postModules)
   .map((mod: any) => ({
@@ -14,24 +13,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Bartos Lab Logs" description="Infrastructure notes, project write-ups, and lab experiments from Eric Bartos.">
-  <h1>Bartos Lab Logs</h1>
-  <p style="color:var(--color-text-muted); margin-bottom:2rem;">
-    Infrastructure notes, project write-ups, and lab experiments.
-  </p>
+  <div class="blog-wrapper">
+    <h1>Bartos Lab Logs</h1>
+    <p class="blog-subtitle">Infrastructure notes, project write-ups, and lab experiments.</p>
 
-  {posts.length === 0 ? (
-    <p>No posts yet — check back soon.</p>
-  ) : (
-    <ul class="post-list">
-      {posts.map((post) => (
-        <li>
-          <span class="post-date">{new Date(post.frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-          <h2 style="margin-top:0.25rem;">
-            <a href={`${base}/blog/${post.slug}/`}>{post.frontmatter.title}</a>
-          </h2>
-          {post.frontmatter.description && <p>{post.frontmatter.description}</p>}
-        </li>
-      ))}
-    </ul>
-  )}
+    {posts.length === 0 ? (
+      <p>No posts yet — check back soon.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <span class="post-date">{new Date(post.frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <h2><a href={`${base}/blog/${post.slug}/`}>{post.frontmatter.title}</a></h2>
+            {post.frontmatter.description && <p>{post.frontmatter.description}</p>}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
 </BaseLayout>
