@@ -9,83 +9,140 @@ const { basics, work, education, skills, projects } = resume;
 function formatRange(start: string, end: string | null): string {
   return end ? `${start} – ${end}` : `${start} – Present`;
 }
+
 ---
 
-<BaseLayout title="Resume — Eric Bartos" description="Eric Bartos's professional resume — infrastructure, networking, and virtualization.">
+<BaseLayout title="Resume — Eric Bartos" description="Eric Bartos — Senior Infrastructure Architect. Enterprise infrastructure, virtualization, networking, and security.">
   <div class="resume-wrapper">
-    <h1>Resume</h1>
-    <p class="subtitle">{basics.label}</p>
 
+    <!-- ── Header ──────────────────────────────────────── -->
+    <header class="resume-header">
+      <h1>{basics.name}</h1>
+      <p class="resume-title">{basics.label}</p>
+      <p class="resume-contact">
+        <a href={`mailto:${basics.email}`}>{basics.email}</a>
+      </p>
+    </header>
+
+    <!-- ── Summary ─────────────────────────────────────── -->
     <section class="resume-section">
       <h2>Summary</h2>
-      <p>{basics.summary}</p>
+      <p class="resume-summary-text">{basics.summary}</p>
     </section>
 
+    <!-- ── At a Glance ─────────────────────────────────── -->
+    <section class="resume-section">
+      <h2>At a Glance</h2>
+      <div class="glance-grid">
+        <div class="glance-item">
+          <span class="glance-value">8+</span>
+          <span class="glance-label">Years in Enterprise Infra</span>
+        </div>
+        <div class="glance-item">
+          <span class="glance-value">300+</span>
+          <span class="glance-label">Users Supported</span>
+        </div>
+        <div class="glance-item">
+          <span class="glance-value">7</span>
+          <span class="glance-label">Locations Managed</span>
+        </div>
+        <div class="glance-item">
+          <span class="glance-value">350+</span>
+          <span class="glance-label">VMs in Production</span>
+        </div>
+        <div class="glance-item">
+          <span class="glance-value">$8M+</span>
+          <span class="glance-label">Technology Portfolio</span>
+        </div>
+        <div class="glance-item">
+          <span class="glance-value">99.9%+</span>
+          <span class="glance-label">Uptime</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Experience ──────────────────────────────────── -->
     <section class="resume-section">
       <h2>Experience</h2>
+
       {work.map((job) => (
         <div class="job">
           <div class="job-header">
             <h3>{job.name}</h3>
             <span class="job-meta">{job.location} &middot; {formatRange(job.startDate, job.endDate)}</span>
           </div>
-          {job.positions.map((pos) => (
-            <div class="position">
-              <span class="position-title">{pos.title}</span>
-              <span class="position-dates"> ({formatRange(pos.startDate, pos.endDate)})</span>
-            </div>
-          ))}
-          <ul>
+
+          <div class="positions-timeline">
+            {job.positions.map((pos) => (
+              <div class="position-row">
+                <span class="position-title">{pos.title}</span>
+                <span class="position-dates">{formatRange(pos.startDate, pos.endDate)}</span>
+              </div>
+            ))}
+          </div>
+
+          <ul class="highlights-list">
             {job.highlights.map((h) => <li>{h}</li>)}
           </ul>
         </div>
       ))}
     </section>
 
+    <!-- ── Key Projects ────────────────────────────────── -->
     <section class="resume-section">
       <h2>Key Projects</h2>
-      <ul>
+      <div class="project-grid">
         {projects.map((p) => (
-          <li><strong>{p.name}</strong> — {p.description}</li>
+          <div class="project-card">
+            <h3>{p.name}</h3>
+            <p>{p.description}</p>
+            {p.technologies && p.technologies.length > 0 && (
+              <div class="project-tech">
+                {p.technologies.map((t) => <span class="tech-label">{t}</span>)}
+              </div>
+            )}
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
 
+    <!-- ── Technical Skills ────────────────────────────── -->
+    <section class="resume-section">
+      <h2>Technical Skills</h2>
+      <div class="skills-table">
+        {skills.map((group) => (
+          <div class="skill-row">
+            <span class="skill-category">{group.name}</span>
+            <span class="skill-items">{group.keywords.join(' · ')}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Education ───────────────────────────────────── -->
     <section class="resume-section">
       <h2>Education</h2>
       {education.map((ed) => (
-        <div class="job">
+        <div class="edu-entry">
           <div class="job-header">
             <h3>{ed.institution}</h3>
             <span class="job-meta">{ed.location} &middot; {formatRange(ed.startDate, ed.endDate)}</span>
           </div>
-          <p>{ed.studyType} — {ed.area}</p>
+          <p class="edu-detail">{ed.studyType} — {ed.area}</p>
           {ed.courses.length > 0 && (
-            <ul>
-              {ed.courses.map((c) => <li>{c}</li>)}
-            </ul>
+            <p class="edu-note">{ed.courses.join('; ')}</p>
           )}
         </div>
       ))}
     </section>
 
-    <section class="resume-section">
-      <h2>Skills</h2>
-      {skills.map((group) => (
-        <div class="skill-group">
-          <h3>{group.name}</h3>
-          <ul class="skill-tags">
-            {group.keywords.map((kw) => <li>{kw}</li>)}
-          </ul>
-        </div>
-      ))}
-    </section>
-
-    <section class="resume-section">
+    <!-- ── Contact ─────────────────────────────────────── -->
+    <section class="resume-section resume-section-last">
       <h2>Contact</h2>
       <p>
-        Email: <a href={`mailto:${basics.email}`}>{basics.email}</a>
+        <a href={`mailto:${basics.email}`}>{basics.email}</a>
       </p>
     </section>
+
   </div>
 </BaseLayout>

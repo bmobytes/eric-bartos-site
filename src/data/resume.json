@@ -4,7 +4,7 @@
     "name": "Eric Bartos",
     "label": "Senior Infrastructure Architect",
     "email": "eric@bartos.media",
-    "summary": "Senior Infrastructure Architect with 8+ years designing and managing enterprise infrastructure supporting 300+ users across 7 locations. Expert in VMware virtualization (29 hosts, 350+ VMs in production), Palo Alto security (18 devices in production), and multi-site network architecture. Proven track record managing $5-8M technology portfolios with 99.9%+ uptime and leading $4M+ infrastructure projects. Experienced in remote infrastructure management and distributed team collaboration."
+    "summary": "Senior Infrastructure Architect with 8+ years designing and managing enterprise infrastructure supporting 300+ users across 7 locations. Expert in VMware virtualization (29 hosts, 350+ VMs in production), Palo Alto security (18 devices in production), and multi-site network architecture. Proven track record managing $8M+ technology portfolios with 99.9%+ uptime and leading $4M+ infrastructure projects. Experienced in remote infrastructure management and distributed team collaboration."
   },
   "work": [
     {
@@ -30,11 +30,14 @@
         }
       ],
       "highlights": [
-        "Lead enterprise infrastructure architecture supporting 300+ employees across 7 locations with $5M+ technology portfolio",
-        "Architect and manage 29-host VMware environment with 350+ VMs across primary, DR, and remote sites",
-        "Design enterprise security with 18 Palo Alto firewalls in 9 HA pairs and centralized Panorama management",
-        "Implement multi-site network with 100G backbone connectivity and EVPN/VXLAN overlay architecture",
-        "Manage enterprise storage infrastructure including 300TB+ capacity across multiple iSCSI/NFS systems"
+        "Lead enterprise infrastructure architecture supporting 300+ employees across 7 locations with $8M+ technology portfolio and 99.9%+ uptime",
+        "Architect and manage 29-host VMware environment with 350+ VMs across primary, DR, and remote sites including HA/DRS clustering, vMotion, and VM lifecycle management",
+        "Design and maintain enterprise security architecture with 18 Palo Alto firewalls in 9 HA pairs, centralized Panorama management, IDS/IPS, and zero-trust network segmentation",
+        "Implement multi-site network with 100G backbone connectivity, EVPN/VXLAN overlay on Cisco Nexus/NDFC, BGP/OSPF routing, and site-to-site VPN",
+        "Manage enterprise storage infrastructure including 300TB+ capacity across Dell PowerStore/Compellent and IXSystems TrueNAS (iSCSI/NFS)",
+        "Operate monitoring and observability stack with Elastic Stack and Zenoss covering SNMP, syslog, and network alerting",
+        "Manage PKI/TLS certificate infrastructure, DNS/DHCP services, and firewall policy across all locations",
+        "Support broadcast network infrastructure including Audio over IP (Dante/AES67) and studio systems"
       ]
     },
     {
@@ -50,8 +53,8 @@
         }
       ],
       "highlights": [
-        "Contributed to physical buildout of new datacenter facility across two summers, laying infrastructure before facility opened",
-        "Led structured cabling, PDU configuration, and physical plant preparation for multi-hall datacenter expansion",
+        "Contributed to physical buildout of new multi-hall datacenter facility across two summers, laying infrastructure before facility opened",
+        "Led structured cabling, optical fiber runs, transceiver installation, PDU configuration, and MDF/IDF physical plant preparation",
         "Performed rack and stack, server builds, Linux provisioning, and pre-configuration of production systems"
       ]
     },
@@ -69,43 +72,44 @@
       ],
       "highlights": [
         "Led campus radio station broadcast infrastructure design and technical operations management",
-        "Implemented audio over IP networking solutions and enterprise telecommunications systems",
+        "Implemented Audio over IP networking solutions and enterprise telecommunications systems",
         "Managed technical staff and training programs"
       ]
     }
   ],
   "projects": [
     {
-      "name": "Enterprise Storage Migration",
-      "description": "Led Dell to IXSystems migration with zero downtime for 300+ users"
+      "name": "Network Architecture Overhaul",
+      "description": "Designed and executed migration from legacy switching to Cisco Nexus with NDFC fabric controller and EVPN/VXLAN overlay architecture. Implemented 100G backbone connectivity, BGP/OSPF routing, VRFs with route leaking, and network segmentation across all sites.",
+      "technologies": ["Cisco Nexus/NX-OS", "NDFC", "EVPN/VXLAN", "BGP/OSPF", "VRFs", "100G backbone"]
     },
     {
-      "name": "DR Site Implementation",
-      "description": "Currently leading complete disaster recovery facility design and buildout"
+      "name": "DR Site Design & Buildout",
+      "description": "Leading complete disaster recovery facility design and buildout including compute, storage, and network replication. Encompasses VMware site recovery, storage replication, and network path redundancy to ensure business continuity.",
+      "technologies": ["VMware Site Recovery", "Storage Replication", "Network Redundancy", "DR Planning"]
+    },
+    {
+      "name": "Colocated Row Build & Commissioning",
+      "description": "Designed and commissioned a colocated datacenter row including power distribution, structured cabling, optical interconnects, and rack infrastructure for production workloads.",
+      "technologies": ["Power Distribution", "Structured Cabling", "Optical Networking", "Rack Infrastructure"]
+    },
+    {
+      "name": "Enterprise Storage Migration",
+      "description": "Led migration from Dell PowerStore/Compellent to IXSystems TrueNAS with zero downtime for 300+ users. Migrated 300TB+ of iSCSI and NFS workloads while maintaining full production availability.",
+      "technologies": ["Dell PowerStore/Compellent", "IXSystems TrueNAS", "iSCSI", "NFS", "Storage Migration"]
     },
     {
       "name": "VMware Infrastructure Modernization",
-      "description": "Executed 12-host hardware refresh and vSphere upgrade"
-    },
-    {
-      "name": "Network Architecture Overhaul",
-      "description": "Designed migration to Cisco Nexus with NDFC and EVPN/VXLAN"
+      "description": "Executed 12-host hardware refresh and vSphere upgrade across the production environment. Included server builds, ESXi deployment, vCenter reconfiguration, and VM migration with HA/DRS optimization.",
+      "technologies": ["VMware vSphere/ESXi", "vCenter", "HA/DRS", "vMotion", "Hardware Refresh"]
     },
     {
       "name": "Complete Datacenter Buildout",
-      "description": "Led initial enterprise datacenter design, layout, and implementation"
+      "description": "Led initial enterprise datacenter design, physical layout, and full implementation including power distribution, structured cabling, MDF/IDF design, and optical networking infrastructure.",
+      "technologies": ["Datacenter Design", "Power Distribution", "Structured Cabling", "MDF/IDF", "Optical Networking"]
     }
   ],
   "education": [
-    {
-      "institution": "Lawrence Technological University",
-      "location": "Southfield, MI",
-      "area": "Audio Production Technology",
-      "studyType": "Attended",
-      "startDate": "2011",
-      "endDate": "2012",
-      "courses": ["Transferred to Michigan Technological University, Spring 2013"]
-    },
     {
       "institution": "Michigan Technological University",
       "location": "Houghton, MI",
@@ -114,34 +118,108 @@
       "startDate": "2013",
       "endDate": "2017",
       "courses": ["Network & systems administration focus"]
+    },
+    {
+      "institution": "Lawrence Technological University",
+      "location": "Southfield, MI",
+      "area": "Audio Production Technology",
+      "studyType": "Attended",
+      "startDate": "2011",
+      "endDate": "2012",
+      "courses": ["Transferred to Michigan Technological University, Spring 2013"]
     }
   ],
   "skills": [
     {
-      "name": "Infrastructure & Virtualization",
+      "name": "Virtualization & Compute",
       "keywords": [
-        "VMware vSphere/ESXi",
+        "VMware vSphere / ESXi",
+        "VMware vCenter",
+        "VMware HA / DRS / vMotion",
+        "VMware Backup / Replication",
         "Omnissa Horizon VDI",
-        "Enterprise Storage (iSCSI/NFS)",
-        "Disaster Recovery Planning"
+        "VM Lifecycle Management",
+        "Hardware Refresh / Server Builds",
+        "Linux (RHEL/CentOS/Ubuntu)",
+        "Windows Server Administration"
       ]
     },
     {
-      "name": "Network & Security",
+      "name": "Networking",
       "keywords": [
-        "Cisco NX-OS/EVPN/VXLAN",
-        "Palo Alto Firewalls & Panorama",
-        "Multi-site WAN/LAN",
-        "BGP/OSPF Routing"
+        "Cisco Nexus / NX-OS",
+        "Cisco NDFC",
+        "EVPN / VXLAN Overlay",
+        "BGP / OSPF Routing",
+        "Multi-site WAN / LAN",
+        "100G Backbone Design",
+        "VLANs / Trunking / STP",
+        "VRFs / Route Leaking",
+        "Site-to-site VPN",
+        "SSL VPN / Remote Access",
+        "DNS / DHCP Administration",
+        "Network Segmentation",
+        "QoS / Traffic Shaping"
       ]
     },
     {
-      "name": "Systems & Automation",
+      "name": "Security",
       "keywords": [
-        "Windows/Linux Admin",
-        "Zenoss Monitoring",
+        "Palo Alto Firewalls",
+        "Palo Alto Panorama",
+        "Zero Trust Architecture",
+        "Network Segmentation / Microsegmentation",
+        "IDS / IPS",
+        "DDoS Mitigation",
+        "PKI / TLS / Certificate Management",
+        "Site-to-site IPsec VPN",
+        "Firewall Policy Management"
+      ]
+    },
+    {
+      "name": "Storage",
+      "keywords": [
+        "Enterprise Storage (iSCSI / NFS)",
+        "Dell PowerStore / Compellent",
+        "IXSystems TrueNAS",
+        "Storage Migration",
+        "NFS / SMB File Services"
+      ]
+    },
+    {
+      "name": "Physical / Datacenter",
+      "keywords": [
+        "Structured Cabling",
+        "Optical Networking",
+        "MDF / IDF Design",
+        "Power Distribution Design",
+        "Hardware Rack and Stack",
+        "Datacenter Facility Buildout"
+      ]
+    },
+    {
+      "name": "Monitoring & Operations",
+      "keywords": [
         "Elastic Stack",
-        "Technical Documentation"
+        "Zenoss Monitoring",
+        "SNMP / Syslog",
+        "Network Monitoring / Alerting",
+        "Incident Response",
+        "Root Cause Analysis",
+        "Change Management",
+        "Network Documentation / Runbooks",
+        "Capacity Planning",
+        "Disaster Recovery Planning",
+        "DR Site Design & Failover"
+      ]
+    },
+    {
+      "name": "Broadcast / AV",
+      "keywords": [
+        "Broadcast Network Infrastructure",
+        "Audio over IP (Dante / AES67)",
+        "Enterprise Telecom Systems",
+        "Studio Infrastructure"
       ]
     }
   ]

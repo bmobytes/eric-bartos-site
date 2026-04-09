@@ -2,52 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import resume from '../data/resume.json';
 
-const { basics, skills, projects } = resume;
+const { basics } = resume;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Eric Bartos — Senior Infrastructure Architect">
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-text">
-        <span class="hero-eyebrow">Senior Infrastructure Architect</span>
-        <h1>{basics.name}</h1>
-        <p class="hero-summary">{basics.summary}</p>
-        <div class="hero-actions">
-          <a href={`${base}/resume/`} class="btn btn-primary">View Resume</a>
-          <a href={`mailto:${basics.email}`} class="btn btn-secondary">Get in Touch</a>
+      <div class="hero-profile">
+        <div class="photo-placeholder">
+          <span>Photo</span>
+          <span class="photo-sub">coming soon</span>
+        </div>
+        <div class="hero-text">
+          <span class="hero-eyebrow">Senior Infrastructure Architect</span>
+          <h1>{basics.name}</h1>
+          <p class="hero-summary">{basics.summary}</p>
+          <div class="hero-actions">
+            <a href={`${base}/resume/`} class="btn btn-primary">Resume</a>
+            <a href={`mailto:${basics.email}`} class="btn btn-secondary">Get in Touch</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="home-skills">
-    <div class="home-skills-inner">
-      <h2 class="section-heading">Core Expertise</h2>
-      <div class="skill-columns">
-        {skills.map((group) => (
-          <div class="skill-column">
-            <h3>{group.name}</h3>
-            <ul class="skill-tags">
-              {group.keywords.map((kw) => <li>{kw}</li>)}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="home-projects">
-    <div class="home-projects-inner">
-      <h2 class="section-heading">Key Projects</h2>
-      <ul class="project-grid">
-        {projects.map((p) => (
-          <li class="project-card">
-            <h3>{p.name}</h3>
-            <p>{p.description}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   </section>
 </BaseLayout>
