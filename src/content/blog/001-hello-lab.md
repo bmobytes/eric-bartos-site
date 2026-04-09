@@ -4,8 +4,6 @@ date: 2026-04-08
 description: "First post — what this blog is about and what to expect."
 ---
 
-# Welcome to Bartos Lab Logs
-
 This is the lab. Infrastructure, networking, automation, and whatever else ends up on the bench.
 
 I'm Eric Bartos — a Senior Infrastructure Architect working across enterprise virtualization, network architecture, and security. This blog is where I'll document projects, share things I've learned the hard way, and occasionally think out loud about the state of infrastructure engineering.

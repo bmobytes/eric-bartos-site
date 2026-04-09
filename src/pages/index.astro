@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import resume from '../data/resume.json';
 
-const { basics } = resume;
+const { basics, skills, projects } = resume;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -18,29 +18,36 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <a href={`mailto:${basics.email}`} class="btn btn-secondary">Get in Touch</a>
         </div>
       </div>
-      <div class="hero-photo">
-        <div class="photo-placeholder" title="Headshot coming soon">
-          <span>Photo</span>
-          <span class="photo-sub">coming soon</span>
-        </div>
+    </div>
+  </section>
+
+  <section class="home-skills">
+    <div class="home-skills-inner">
+      <h2 class="section-heading">Core Expertise</h2>
+      <div class="skill-columns">
+        {skills.map((group) => (
+          <div class="skill-column">
+            <h3>{group.name}</h3>
+            <ul class="skill-tags">
+              {group.keywords.map((kw) => <li>{kw}</li>)}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="entry-section">
-    <div class="entry-inner">
-      <div class="entry-card">
-        <span class="entry-eyebrow">Writing &amp; Notes</span>
-        <h2 class="entry-title">Bartos Lab Logs</h2>
-        <p class="entry-desc">Infrastructure deep-dives, lab experiments, and project write-ups from the home rack and beyond.</p>
-        <a href={`${base}/blog/`} class="entry-link">Browse the logs &rarr;</a>
-      </div>
-      <div class="entry-card">
-        <span class="entry-eyebrow">Background</span>
-        <h2 class="entry-title">Work &amp; Experience</h2>
-        <p class="entry-desc">Cloud-native infrastructure, automation, and platform reliability — see the full picture on the resume.</p>
-        <a href={`${base}/resume/`} class="entry-link">View full resume &rarr;</a>
-      </div>
+  <section class="home-projects">
+    <div class="home-projects-inner">
+      <h2 class="section-heading">Key Projects</h2>
+      <ul class="project-grid">
+        {projects.map((p) => (
+          <li class="project-card">
+            <h3>{p.name}</h3>
+            <p>{p.description}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 </BaseLayout>

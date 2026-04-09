@@ -222,10 +222,7 @@ main {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: center;
+  text-align: center;
 }
 
 .hero-eyebrow {
@@ -249,8 +246,8 @@ main {
 .hero-summary {
   font-size: 1.025rem;
   color: var(--color-text-muted);
-  max-width: 38rem;
-  margin-bottom: 2rem;
+  max-width: 40rem;
+  margin: 0 auto 2rem;
   line-height: 1.65;
 }
 
@@ -258,6 +255,7 @@ main {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .photo-placeholder {
@@ -287,16 +285,6 @@ main {
 }
 
 @media (max-width: 580px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-  }
-  .hero-photo {
-    order: -1;
-  }
-  .photo-placeholder {
-    width: 100px;
-    height: 100px;
-  }
   .hero h1 {
     font-size: 2rem;
   }
@@ -509,75 +497,69 @@ main {
   margin-bottom: 0;
 }
 
-/* ── Entry modules (home landing) ───────────────────── */
-
-.entry-section {
-  padding: 3rem 0;
+/* Suppress a leading H1 inside blog content that duplicates the
+   frontmatter title already rendered by the template header. */
+.blog-content > h1:first-child {
+  display: none;
 }
 
-.entry-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
+/* ── Home skills section ────────────────────────────── */
 
-.entry-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  transition: box-shadow 0.15s, border-color 0.15s;
-}
-
-.entry-card:hover {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  border-color: var(--color-border-strong);
-}
-
-.entry-eyebrow {
-  display: inline-block;
-  font-size: 0.7rem;
+.section-heading {
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.entry-title {
-  font-size: 1.2rem;
-  font-weight: 700;
+.home-skills {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.home-skills-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.skill-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.skill-column h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
   margin-top: 0;
   margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
-  color: var(--color-text);
+  text-align: center;
 }
 
-.entry-desc {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
+.skill-column .skill-tags {
+  justify-content: center;
 }
 
-.entry-link {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-accent);
-  text-decoration: none;
+.home-projects {
+  padding: 2.5rem 0 3rem;
 }
 
-.entry-link:hover {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
+.home-projects-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 @media (max-width: 580px) {
-  .entry-inner {
+  .skill-columns {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 
